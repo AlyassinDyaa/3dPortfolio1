@@ -8,7 +8,8 @@ import LOGO from "../assets/logo.png"
 
 const Navbar = () => {
 
-  const [active, setActive] = useState("")
+  const [active, setActive] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   return (
     <nav
@@ -31,9 +32,56 @@ const Navbar = () => {
                   window.scrollTo(0,0);
                 }}
               >
-                <img src = {logo} className = 'w-9 h-9 object-contain' alt='logo' />
-                <p className = 'text-white text-[18px] font-bold cursor-pointer' >D'Yaa <span className = 'sm:block hidden'>Alyassin</span></p>
+                <img src = {LOGO} className = 'w-9 h-9 object-contain m-[10px]' alt='logo' />
+                {/* &nbsp; => white space */}
+                <p className = 'text-white text-[18px] font-bold cursor-pointer flex' >D'Yaa &nbsp;<span className = 'sm:block hidden'>Alyassin</span></p>
               </Link>
+
+               {/*  we are creating the WEB navigation bar */}
+              <ul className = 'list-none hidden sm:flex  gap-10'>
+                {navLinks.map((link) => (
+                  <li key={link.id} 
+                  // using the key we want to check whether the links are active 
+                    className = {`${active === link.title ? "text-white" : "text-secondary"}
+                    hover:text-white text-[18px] font-medium curser-pointer`}
+                    onClick={() => setActive(link.title)}>
+
+                    <a href = {`${link.id}`}>{link.title}</a>
+                  </li>
+                ))}
+              </ul>
+
+              {/*  we are creating the mobile navigation bar */}
+              <div className='sm:hidden flex flex-1 justify-end items-center'>
+                  <img 
+                  /* CHECKING AND TOGGLING BETWEEN CLOSE AND OPEN MENU */
+                  src = {toggle ? close : menu}
+                  alt = 'menu'
+                  placeholder = 'menu'
+                  className = 'w-[28px] h-[28px]'
+                  onClick = {() => setToggle(!toggle)}/>
+
+                  {/* SETTING UP ACTUAL MENU  */}
+                  <div className={`${!toggle ? 'hidden' : 'flex'}  p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
+                      <ul className = 'list-none flex justify-end items-start flex-col gap-4  gap-10'>
+                        {navLinks.map((link) => (
+                          <li key={link.id} 
+                          // using the key we want to check whether the links are active 
+                            className = {`${active === link.title ? "text-white" : "text-secondary"}
+                           font-poppins font-medium cursor-pointer text-[16px]`}
+                            onClick={() => {
+                              setToggle(!toggle)
+                              setActive(link.title)}
+                            }>
+
+                            <a href = {`${link.id}`}>{link.title}</a>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+              </div>
+
+
           </div>
     </nav>
   )
