@@ -31,7 +31,7 @@ const Navbar = () => {
                   window.scrollTo(0,0);
                 }}
               >
-                <img src = {LOGO} className = 'w-9 h-9 object-contain' alt='logo' />
+                <img src = {logo} className = 'w-9 h-9 object-contain' alt='logo' />
                 <p className = 'text-white text-[18px] font-bold cursor-pointer' >D'Yaa <span className = 'sm:block hidden'>Alyassin</span></p>
               </Link>
           </div>
