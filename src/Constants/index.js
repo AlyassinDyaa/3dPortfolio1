@@ -61,6 +61,14 @@ const services = [
     title: "UI/UX",
     icon: creator,
   },
+  {
+    title: "Android Development",
+    icon: creator,
+  },
+  {
+    title: "Ardino",
+    icon: creator,
+  },
 ];
 
 const technologies = [
