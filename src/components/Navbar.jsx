@@ -51,6 +51,8 @@ const Navbar = () => {
                 ))}
               </ul>
 
+              <div>DA</div>
+
               {/*  we are creating the mobile navigation bar */}
               <div className='sm:hidden flex flex-1 justify-end items-center'>
                   <img 
